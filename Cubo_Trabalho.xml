@@ -1,0 +1,68 @@
+<Schema name="trabalho">
+  <Dimension type="StandardDimension" visible="true" name="dm_escolaridade">
+    <Hierarchy name="New Hierarchy 0" visible="true" hasAll="true">
+      <Table name="dm_escolaridade" alias="">
+      </Table>
+      <Level name="ano" visible="true" column="escolaridade_Ano" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="dm_municipio">
+    <Hierarchy name="New Hierarchy 0" visible="true" hasAll="true">
+      <Table name="dm_municipio" alias="">
+      </Table>
+      <Level name="residencia" visible="true" column="municipio_Residencia" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="dm_obito">
+    <Hierarchy name="New Hierarchy 0" visible="true" hasAll="true">
+      <Table name="dm_obito" alias="">
+      </Table>
+      <Level name="mes" visible="true" column="mes_Obito" uniqueMembers="false">
+      </Level>
+      <Level name="dia" visible="true" column="dia_Obito" uniqueMembers="false">
+      </Level>
+      <Level name="causa 1979" visible="true" column="causa_Basica_Obito_1979" uniqueMembers="false">
+      </Level>
+      <Level name="causa 2006" visible="true" column="causa_Basica_Obito_2006" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="dm_pessoa">
+    <Hierarchy name="New Hierarchy 0" visible="true" hasAll="true">
+      <Table name="dm_pessoa" alias="">
+      </Table>
+      <Level name="idade" visible="true" column="idade" uniqueMembers="false">
+      </Level>
+      <Level name="raca" visible="true" column="raca_cor" uniqueMembers="false">
+      </Level>
+      <Level name="naturalidade" visible="true" column="naturalidade" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Dimension type="StandardDimension" visible="true" name="dm_statusmorte">
+    <Hierarchy name="New Hierarchy 0" visible="true" hasAll="true">
+      <Table name="dm_statusmorte" alias="">
+      </Table>
+      <Level name="epidemiologico" visible="true" column="status_Epidemiologico" uniqueMembers="false">
+      </Level>
+    </Hierarchy>
+  </Dimension>
+  <Cube name="trabalho" visible="true" cache="true" enabled="true">
+    <Table name="fatoobito" alias="">
+    </Table>
+    <DimensionUsage source="dm_escolaridade" name="escolaridade" visible="true">
+    </DimensionUsage>
+    <DimensionUsage source="dm_municipio" name="municipio" visible="true">
+    </DimensionUsage>
+    <DimensionUsage source="dm_obito" name="obito" visible="true">
+    </DimensionUsage>
+    <DimensionUsage source="dm_pessoa" name="pessoa" visible="true">
+    </DimensionUsage>
+    <DimensionUsage source="dm_statusmorte" name="status_morte" visible="true">
+    </DimensionUsage>
+    <Measure name="soma_obito" column="id_Obito" datatype="Numeric" aggregator="sum" visible="true">
+    </Measure>
+  </Cube>
+</Schema>
